@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Reservas</title>
+</head>
+<body>
+    <h1>Listado de Reservas</h1>
+    <table>
+        <tr>
+            <th>Nombre</th>
+            <th>Fecha</th>
+            <th>Hora</th>
+            <th>Estado</th>
+            <th>Acciones</th>
+        </tr>
+        {% for reserva in reservas %}
+            <tr>
+                <td>{{ reserva.nombre }}</td>
+                <td>{{ reserva.fecha_reserva }}</td>
+                <td>{{ reserva.hora_reserva }}</td>
+                <td>{{ reserva.estado }}</td>
+                <td>
+                    <a href="{% url 'detalle_reserva' reserva.id %}">Ver</a> |
+                    <a href="{% url 'editar_reserva' reserva.id %}">Editar</a> |
+                    <a href="{% url 'eliminar_reserva' reserva.id %}">Eliminar</a>
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
